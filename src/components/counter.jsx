@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
-    stat = {
+    state = {
         count: 0,
         tags: ['tag1','tag2','tag3']
        
