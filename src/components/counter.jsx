@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Counter extends Component {
     state = {
         // getting props from the counters component.
-        value: this.props.value
+        value: this.props.counter.value
         
        
     };
@@ -11,7 +11,6 @@ class Counter extends Component {
 
 
     handleIncrement = product => {
-        console.log(product);
         this.setState({value: this.state.value + 1})
     };
 
@@ -23,7 +22,14 @@ class Counter extends Component {
             <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
             <button onClick = {() => this.handleIncrement()} 
             className ='btn btn-seconadary btn-sm'>Increment</button>
-            <button onClick={this.props.onDelete}  className ='btn btn-danger btn-sm m-2'>Delete</button>
+
+            <button
+            /*gets on delete methosd with via props from counters component */
+             onClick={()=>this.props.onDelete(this.props.counter.id)}  
+            className ='btn btn-danger btn-sm m-2'
+            >
+            Delete
+            </button>
             
         </div>
         ); 
