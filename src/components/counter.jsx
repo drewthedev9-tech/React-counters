@@ -1,27 +1,17 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
-    state = {
-        // getting props from the counters component.
-        value: this.props.counter.value
-        
-       
-    };
 
-
-
-    handleIncrement = product => {
-        this.setState({value: this.state.value + 1})
-    };
-
-   
     render() {
         return(
         // Need () and the <div></div>
          <div>
             <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-            <button onClick = {() => this.handleIncrement()} 
-            className ='btn btn-seconadary btn-sm'>Increment</button>
+            <button 
+            onClick={()=>this.props.onIncrement(this.props.counter)} 
+            className ='btn btn-seconadary btn-sm'>
+            Increment
+            </button>
 
             <button
             /*gets on delete methosd with via props from counters component */
@@ -36,13 +26,13 @@ class Counter extends Component {
     }
    
     formatCount(){
-        const {value: count} = this.state;
-        return count === 0 ? <h1>Zero</h1> : count;
+        const {value} = this.props.counter;
+        return value === 0 ? <h1>Zero</h1> : value;
     }
    
     getBadgeClasses() {
         let classes = "badge m-2 badge-";
-        classes += (this.state.value === 0) ? "warning" : "primary";
+        classes += (this.props.counter.value === 0) ? "warning" : "primary";
         return classes;
     }
 
