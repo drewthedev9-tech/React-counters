@@ -1,32 +1,64 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
+    // Gtes the differetn states.
+componentDidUpdate(prevProps, prevState){
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+    if (prevProps.counter.value !== this.props.counter.value){
+        // Ajax call and get new dat from server.
+    }
 
+}
+// method called just before a compnent is removed from the DOM
+componentWillUnmount(){
+    console.log("Counter-unmount");
+}
     render() {
+        console.log("counter- rendered");
         return(
         // Need () and the <div></div>
-         <div>
-            <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-            <button 
-            onClick={()=>this.props.onIncrement(this.props.counter)} 
-            className ='btn btn-seconadary btn-sm'>
-            Increment
-            </button>
+        
+         <div className ="row">
+        <div className="col-1">
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        </div>
+        <div className ="col">
+        <button 
+        onClick={()=>this.props.onIncrement(this.props.counter)} 
+        className ='btn btn-seconadary btn-sm'>
+        +
+        </button>
 
-            <button
-            /*gets on delete methosd with via props from counters component */
-             onClick={()=>this.props.onDelete(this.props.counter.id)}  
-            className ='btn btn-danger btn-sm m-2'
-            >
-            Delete
-            </button>
+        <button 
+        onClick={()=>this.props.onDecrement(this.props.counter)} 
+        className ='btn btn-seconadary btn-sm m-2'
+        // disabling the decrement button on value "0".
+        disabled={this.props.counter.value === 0 ? "disabled" :""}
+        >
+        -
+        </button>
+
+        <button
+        /*gets on delete methosd with via props from counters component */
+         onClick={()=>this.props.onDelete(this.props.counter.id)}  
+        className ='btn btn-danger btn-sm '
+        >
+        Delete
+        </button>
+        </div>
+            
+           
             
         </div>
         ); 
     }
    
     formatCount(){
+        // object destructuring.
         const {value} = this.props.counter;
+        // includes the "Zero" being a JSX expression.
+        // also written in ternary operator.
         return value === 0 ? <h1>Zero</h1> : value;
     }
    

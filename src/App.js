@@ -9,6 +9,7 @@ class App extends Component {
         {id: 1, value: 4 },
         {id: 2, value: 0 },
         {id: 3, value: 0 },
+        
         {id: 4, value: 0 }
     ]
   };
@@ -23,7 +24,7 @@ class App extends Component {
     console.log('App-Mounted');
   }
 
-
+// increments the count when clicked.
 handleIncrement = counter =>{
     console.log(counter);
     const counters = [...this.state.counters];
@@ -31,6 +32,15 @@ handleIncrement = counter =>{
     counters[index] = {...counter};
     counters[index].value++;
     this.setState({counters});
+};
+
+handleDecrement = counter =>{
+  console.log(counter);
+  const counters = [...this.state.counters];
+  const index = counters.indexOf(counter);
+  counters[index] = {...counter};
+  counters[index].value--;
+  this.setState({counters});
 };
 
 handleReset=()=>{
@@ -63,6 +73,7 @@ handleDelete = counterId => {
           /* rainsing events passing to children components*/
           onReset= {this.handleReset} 
           onIncrement={this.handleIncrement}
+          onDecrement={this.handleDecrement}
           onDelete={this.handleDelete}/>
         </main>
         </React.Fragment>

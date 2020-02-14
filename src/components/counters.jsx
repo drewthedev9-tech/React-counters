@@ -6,7 +6,10 @@ class Counters extends Component {
    
     // map function makes a new loops thorugh and creates a new counter component.
     render() { 
-        const {onReset, counters, onDelete, onIncrement} = this.props;
+        
+        console.log("counters - rendered");
+        // Destructuring.
+        const {onReset, counters, onDelete, onIncrement, onDecrement} = this.props;
         return (
             <div>
            <button
@@ -23,6 +26,7 @@ class Counters extends Component {
                  /*Bubbling the event up to teh parent component*/
                  onDelete={onDelete} 
                  onIncrement={onIncrement}
+                 onDecrement={onDecrement}
                  /*referring to the counter object counters(above)*/
                  counter={counter}
                 
