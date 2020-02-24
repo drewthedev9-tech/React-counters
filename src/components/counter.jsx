@@ -40,7 +40,7 @@ componentWillUnmount(){
         </button>
 
         <button
-        /*gets on delete methosd with via props from counters component */
+        /*gets ondelete methosd with via props from counters component */
          onClick={()=>this.props.onDelete(this.props.counter.id)}  
         className ='btn btn-danger btn-sm '
         >
